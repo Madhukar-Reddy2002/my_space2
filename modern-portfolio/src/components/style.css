@@ -1,0 +1,14 @@
+.glow-animation {
+      position: relative;
+      border-radius: 50%;
+      overflow: hidden;
+      animation: glowing-border 1.5s infinite alternate;
+    }
+  @keyframes glowing-border {
+      0% {
+        box-shadow: 0 0 5px rgba(63, 218, 255, 0.7);
+      }
+      100% {
+        box-shadow: 0 0 20px rgba(63, 218, 255, 1);
+      }
+    }
