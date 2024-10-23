@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { Link } from 'react-router-dom';
 import CountUp from 'react-countup';
 import imag from "../assets/mainIconsdark.svg";
 import dp from "../assets/dp.jpg"
@@ -173,13 +174,13 @@ const Home = () => {
         and data science. With expertise in both domains, I build applications that not only
         look great but also deliver meaningful insights.
       </p>
-      <motion.a
-        href="/about"
-        className="inline-flex items-center text-sky-400 hover:text-sky-300 font-semibold"
-        whileHover={{ x: 5 }}
-      >
-        Learn more about my journey <ArrowRight className="ml-2 w-4 h-4" />
-      </motion.a>
+      <Link
+  to="/about"
+  className="inline-flex items-center text-sky-400 hover:text-sky-300 font-semibold"
+>
+  Learn more about my journey <ArrowRight className="ml-2 w-4 h-4" />
+</Link>
+
     </motion.div>
   </div>
 
@@ -282,13 +283,13 @@ const Home = () => {
               </motion.div>
             ))}
           </div>
-            <motion.a
-              href="/projects"
+            <Link
+              to="/projects"
               className="pt-5 inline-flex items-center text-sky-400 hover:text-sky-300 font-semibold"
               whileHover={{ x: 5 }}
             >
               View all projects <ArrowRight className="ml-2 w-4 h-4" />
-            </motion.a>
+            </Link>
           </div>
         </div>
       </section>
