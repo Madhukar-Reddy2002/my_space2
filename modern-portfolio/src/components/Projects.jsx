@@ -10,7 +10,7 @@ const Projects = () => {
   const categories = [
     { id: 'all', label: 'All Projects' },
     { id: 'web-development', label: 'Web Development' },
-    { id: 'data-science', label: 'Data Science' },
+    { id: 'data-analytics', label: 'Data Analytics' },
     { id: 'machine-learning', label: 'Machine Learning' },
   ];
 

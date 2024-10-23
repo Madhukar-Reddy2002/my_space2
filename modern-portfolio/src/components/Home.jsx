@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import CountUp from 'react-countup';
 import imag from "../assets/mainIconsdark.svg";
 import dp from "../assets/dp.jpg"
+import resume from "../assets/CV(FSD).pdf";
 import {
   Github,
   Twitter,
@@ -108,15 +109,15 @@ const Home = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 }}
             >
-              <motion.a
-                href="/resume.pdf"
+              <Link
+                to={resume}
                 className="px-8 py-3 bg-gradient-to-r from-sky-500 to-blue-600 rounded-full font-semibold
                           hover:shadow-lg hover:shadow-sky-500/30 transition-all duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 Download Resume
-              </motion.a>
+              </Link>
 
               <div className="flex space-x-4">
                 {socialLinks.map((social, index) => (
