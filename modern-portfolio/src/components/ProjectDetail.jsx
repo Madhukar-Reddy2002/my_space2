@@ -5,7 +5,7 @@ import { Navigation, Pagination } from 'swiper/modules';  // Correct import path
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { projects } from './data.js';
+import projects from './data.js';
 
 const ProjectDetail = () => {
   const { id } = useParams();

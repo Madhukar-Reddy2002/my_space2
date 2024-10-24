@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
-import { projects } from './data.js';
+import projects from './data.js';
 
 const Projects = () => {
   const [filter, setFilter] = useState('all');
