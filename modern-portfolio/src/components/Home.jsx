@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect} from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Link } from 'react-router-dom';
@@ -19,6 +19,9 @@ import {
   Brain
 } from 'lucide-react';
 import "./style.css";
+import bankv from  "../assets/bank1.png";
+import iplb from "../assets/ipld3.jpg";
+import ss from "../assets/superstore.jpeg";
 const Home = () => {
   const [mounted, setMounted] = useState(false);
   const { scrollY } = useScroll();
@@ -41,26 +44,28 @@ const Home = () => {
 
   const featuredProjects = [
     {
-      title: 'Data Genie',
-      description: 'AI-powered data exploration assistant',
-      tags: ['ML', 'Python'],
-      image: '/api/placeholder/400/300',
-      link: '#'
-    },
-    {
-      title: 'IPL Analytics',
-      description: 'Cricket statistics dashboard',
-      tags: ['Tableau', 'Analytics'],
-      image: '/api/placeholder/400/300',
-      link: '#'
-    },
-    {
-      title: 'Super Story',
-      description: 'Sales prediction platform',
-      tags: ['React', 'ML'],
-      image: '/api/placeholder/400/300',
-      link: '#'
-    }
+      title: 'FinanceFlow',
+      description: 'Personal finance management system. A comprehensive platform combining web development and data analytics to help users track expenses, manage budgets, and visualize financial patterns. Built with FastAPI and React.js.',
+      tags: ['FastAPI', 'React.js', 'Chart.js', 'MongoDB'],
+      image: bankv,
+      link: 'https://www.linkedin.com/posts/dandumadhukarreddy_datascience-webdevelopment-fastapi-activity-7254058199677353984-p9G8?utm_source=share&utm_medium=member_desktop',
+  },  
+      
+      {
+    title: 'Superstore Analytics',
+    description: 'An analytics platform for deep insights into Superstore operations, including sales patterns, customer behavior, and product performance through various charts. Features include flexible data upload, validation, multi-level filtering, time series and geographic visualization, segment analysis, custom reporting, and export options.',
+    tags: ['Streamlit', 'Plotly', 'Pandas'],
+    image: ss,
+    link: 'https://superstorebyms.streamlit.app/',
+      },
+      {
+    title: 'IPL Guru',
+    description: 'A cricket data analysis platform covering IPL history, with features like player and team performance tracking, match stats, head-to-head analysis, venue-specific data, and historical trend visualizations. Built for enthusiasts and analysts, it’s a Tableau-powered tool that delves into IPL cricket statistics from 2008-2023.',
+    tags: ['Python', 'MySQL', 'Plotly', 'Data Analysis'],
+    image: iplb,
+    link: 'https://iplguru.streamlit.app/',
+      }
+      
   ];
 
   const socialLinks = [
@@ -135,8 +140,6 @@ const Home = () => {
               </div>
             </motion.div>
           </div>
-
-          {/* Image beside text on larger screens, below text on smaller screens */}
           <motion.div
             className="w-56 h-full md:w-96 md:h-full flex-shrink-0"
             initial={{ opacity: 0 }}
@@ -228,72 +231,75 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/* Featured Projects Section */}
-      <section ref={projectsRef} className="py-20 bg-gray-800/50">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <motion.h2
+<section ref={projectsRef} className="py-20 bg-gray-800/50">
+  <div className="max-w-6xl mx-auto px-4">
+    <div className="text-center mb-12">
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        animate={projectsInView ? { opacity: 1, y: 0 } : {}}
+        className="text-4xl font-bold text-sky-400 mb-4"
+      >
+        Featured Projects
+      </motion.h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {featuredProjects.map((project, index) => {
+          return (
+            <motion.div
+              key={project.title}
               initial={{ opacity: 0, y: 20 }}
               animate={projectsInView ? { opacity: 1, y: 0 } : {}}
-              className="text-4xl font-bold text-sky-400 mb-4"
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+              whileHover={{ y: -10 }}
+              className="bg-gray-900 rounded-xl overflow-hidden border border-gray-700 
+                          hover:border-sky-500 transition-all duration-300"
             >
-              Featured Projects
-            </motion.h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {featuredProjects.map((project, index) => (
-              <motion.div
-                key={project.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={projectsInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                whileHover={{ y: -10 }}
-                className="bg-gray-900 rounded-xl overflow-hidden border border-gray-700 
-                         hover:border-sky-500 transition-all duration-300"
-              >
-                <img
+              <div className="relative">
+              <img
                   src={project.image}
                   alt={project.title}
                   className="w-full h-48 object-cover"
                 />
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2 text-sky-400">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-400 mb-4">
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-3 py-1 bg-gray-800 text-sky-400 rounded-full text-sm"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <motion.a
-                    href={project.link}
-                    className="inline-flex items-center text-sky-400 hover:text-sky-300"
-                    whileHover={{ x: 5 }}
-                  >
-                    View Details <ExternalLink className="ml-2 w-4 h-4" />
-                  </motion.a>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-2 text-sky-400">
+                  {project.title}
+                </h3>
+                <p className="text-gray-400 mb-4">
+                  {project.description}
+                </p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-3 py-1 bg-gray-800 text-sky-400 rounded-full text-sm"
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
-              </motion.div>
-            ))}
-          </div>
-            <Link
-              to="/projects"
-              className="pt-5 inline-flex items-center text-sky-400 hover:text-sky-300 font-semibold"
-              whileHover={{ x: 5 }}
-            >
-              View all projects <ArrowRight className="ml-2 w-4 h-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
+                <motion.a
+                  href={project.link}
+                  className="inline-flex items-center text-sky-400 hover:text-sky-300"
+                  whileHover={{ x: 5 }}
+                >
+                  View Details <ExternalLink className="ml-2 w-4 h-4" />
+                </motion.a>
+              </div>
+            </motion.div>
+          );
+        })}
+      </div>
+      <Link
+        to="/projects"
+        className="pt-5 inline-flex items-center text-sky-400 hover:text-sky-300 font-semibold"
+        whileHover={{ x: 5 }}
+      >
+        View all projects <ArrowRight className="ml-2 w-4 h-4" />
+      </Link>
+    </div>
+  </div>
+</section>
     </div>
   );
 };
